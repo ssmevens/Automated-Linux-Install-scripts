@@ -2519,7 +2519,7 @@ nlgG4Rbx38zw/+LRJ4XpAczqIWrIGlA8fGyy1cFf3y1E6WnWPy5LKjyL2aUwn8DNoEmSCrv8FhZw
 QWVvYAXx/64t/+c///nPf/7zn//85z//+c9//vOf//znP//5z3/+85///Oc///nPf/7zn//85z//
 +f/7P/JTGtMAIAMA
 EOF
-
+# set up rdp manager and backgrounds
 apt-get install ./rdp_manager*.deb
 mkdir -p /usr/local/share/images
 chown root:root ITS*.jpg 10-openntpd
@@ -2563,4 +2563,4 @@ apt-get install -f -y
 
 # Cleanup after ourselves
 cd /root
-rm -f admin_password setup.sh skeleton.tar.gz *.deb awkfile
+#rm -f admin_password setup.sh skeleton.tar.gz *.deb awkfile
