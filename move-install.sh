@@ -2,18 +2,15 @@
 
 #this script removes sets up the install of the autoamted linux installs
 # delete the existing install folders
-rm -rf /var/www/html/install/bookworm
-rm -rf /var/www/html/install/mint
-
-# move the new install folders to the web root
-mv ./bookworm /var/www/html/install/bookworm
-mv ./mint /var/www/html/install/mint
+ 
+sudo rsync -a --delete ./bookworm/ /var/www/html/install/bookworm
+sudo rsync -a --delete ./mint/ /var/www/html/install/mint
 
 # set permissions
-chmod -R 755 /var/www/html/install
-chown -R www-data:www-data /var/www/html/install
+sudo chmod -R 755 /var/www/html/install
+sudo chown -R www-data:www-data /var/www/html/install
 
 # restart nginx
-systemctl restart nginx
+sudo systemctl restart nginx
 
-
+echo "Files moved and permissions set"
