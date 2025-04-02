@@ -113,6 +113,9 @@ chown -R root:root /etc/skel
 mv /root/mint_files/ORIGINAL.jpg /usr/share/backgrounds/linuxmint/default_background.jpg
 chmod 644 /usr/share/backgrounds/linuxmint/default_background.jpg
 
+# Uninstalling Firefox
+apt-get remove firefox -y
+
 
 # Cleanup after ourselves
 cd /root

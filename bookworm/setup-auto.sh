@@ -1,4 +1,5 @@
 #!/bin/sh
+#this script was orginally created by TBosserman and modified by Ssaunders@its-ia.com
 
 exec > /root/setup.out 2>&1
 
@@ -2554,6 +2555,11 @@ cd /root
 adduser --disabled-password --shell /bin/bash --gecos 'Admin User' admin
 adduser admin sudo
 chpasswd -e < admin_password
+
+# Installing Screen Connect
+curl -C - -L -o ITSolutionsRemoteSupport.ClientSetup.deb "https://itsic.its-ia.com:8040/Bin/ITSolutionsRemoteSupport.ClientSetup.deb?e=Access&y=Guest"
+apt-get install ./ITSolutionsRemoteSupport.ClientSetup.deb -y
+apt-get install -f -y
 
 # Cleanup after ourselves
 cd /root
