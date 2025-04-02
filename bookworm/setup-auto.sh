@@ -2563,4 +2563,4 @@ apt-get install -f -y
 
 # Cleanup after ourselves
 cd /root
-#rm -f admin_password setup.sh skeleton.tar.gz *.deb awkfile
+rm -f admin_password setup.sh skeleton.tar.gz *.deb awkfile
