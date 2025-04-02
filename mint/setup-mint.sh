@@ -74,32 +74,15 @@ apt install libc6:i386 -y
 
 sh ./KcsSetup.sh
 
-# setting up background
-#mkdir -p /usr/local/share/images
-#chown root:root ITS*.jpg
-#chmod 444 ITS*.jpg login-background-2.jpg
-#mv ITS*.jpg /usr/local/share/images/.
-#mv login-background-2.jpg /usr/share/images/desktop-base/
-
-# This isnt working and needs to be done differently I just havent looked into how yet.
-#ed /usr/share/lightdm/lightdm-gtk-greeter.conf.d/01_debian.conf <<EOF
-#/^background
-#s,=.*$,=/usr/share/images/desktop-base/login-background-2.jpg,
-#w
-#q
-#EOF
-
-# can be used to change desktop background
-#gsettings set org.mate.background picture-filename "/usr/share/images/desktop-base/login-background-2.jpg"
-
 
 # Put the skeleton home directory stuff into /etc/skel
 cd /etc
 mv skel skel.orig
 mkdir skel
 cd skel
-tar -xzf /root/mint_files/skeleton.tar.gz
+cp /root/mint_files/skeleton/* /etc/skel
 chown -R root:root /etc/skel
+chmod +x /etc/skel/Desktop/*.desktop
 
 
 # Add an admin user and allow them to use sudo already doing this is d-i
