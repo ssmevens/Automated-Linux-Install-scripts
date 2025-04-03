@@ -57,7 +57,7 @@ apt-get install ./ITSolutionsRemoteSupport.ClientSetup.deb -y
 apt-get install -f -y
 
 # Download files
-wget --content-disposition https://itsia-my.sharepoint.com/:u:/g/personal/etienne1204_its-ia_com/EUKK4s5msHZDrPFGM5rb6AEBEEBJ_VO6fdYt68HFitCjmQ?download=1
+wget --content-disposition https://itsia-my.sharepoint.com/:f:/g/personal/etienne1204_its-ia_com/Ep02-gqZ9XNImyY9QjUb8b0BDjnaWRwIC8wNK9PA919gAw?download=1
 unzip ./mint_files.zip
 cd mint_files
 
