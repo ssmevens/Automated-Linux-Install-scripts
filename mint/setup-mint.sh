@@ -57,13 +57,10 @@ apt-get install ./ITSolutionsRemoteSupport.ClientSetup.deb -y
 apt-get install -f -y
 
 # Download files
-#wget --content-disposition https://itsia-my.sharepoint.com/:f:/g/personal/etienne1204_its-ia_com/Ep02-gqZ9XNImyY9QjUb8b0BDjnaWRwIC8wNK9PA919gAw?download=1
-#unzip ./mint_files.zip
-#cd mint_files
-
 cd /root
 apt install git -y
 git clone https://github.com/ssmevens/mint_files.git && cd mint_files
+cp ./apparmor/* /etc/apparmor.d/
 
 
 # installing RDP Client
@@ -85,16 +82,9 @@ cd /etc
 mv skel skel.orig
 mkdir skel
 cd skel
-cp /root/mint_files/skeleton/* /etc/skel
+cp -r /root/mint_files/skeleton/* /etc/skel
 chown -R root:root /etc/skel
 chmod +x /etc/skel/Desktop/*.desktop
-
-
-# Add an admin user and allow them to use sudo already doing this is d-i
-#cd /root
-#adduser --disabled-password --shell /bin/bash --gecos 'Admin User' admin
-#adduser admin sudo
-#chpasswd -e < ./mint_files/admin_password
 
 
 # this is working as expected
