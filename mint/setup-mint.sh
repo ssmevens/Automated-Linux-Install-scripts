@@ -57,9 +57,14 @@ apt-get install ./ITSolutionsRemoteSupport.ClientSetup.deb -y
 apt-get install -f -y
 
 # Download files
-wget --content-disposition https://itsia-my.sharepoint.com/:f:/g/personal/etienne1204_its-ia_com/Ep02-gqZ9XNImyY9QjUb8b0BDjnaWRwIC8wNK9PA919gAw?download=1
-unzip ./mint_files.zip
-cd mint_files
+#wget --content-disposition https://itsia-my.sharepoint.com/:f:/g/personal/etienne1204_its-ia_com/Ep02-gqZ9XNImyY9QjUb8b0BDjnaWRwIC8wNK9PA919gAw?download=1
+#unzip ./mint_files.zip
+#cd mint_files
+
+cd /root
+apt install git -y
+git clone https://github.com/ssmevens/mint_files.git && cd mint_files
+
 
 # installing RDP Client
 apt-get install freerdp2-x11 -y
@@ -72,7 +77,7 @@ apt update
 # install libc
 apt install libc6:i386 -y
 
-sh ./KcsSetup.sh
+bash ./KcsSetup.sh
 
 
 # Put the skeleton home directory stuff into /etc/skel
