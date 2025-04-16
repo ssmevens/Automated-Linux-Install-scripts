@@ -33,6 +33,7 @@ apt install google-chrome-stable -y
 apt install -y ubuntu-restricted-extras
 apt install -y ubuntu-drivers-common
 ubuntu-drivers autoinstall -y
+apt install -y mint-meta-codecs
 
 
 # installing and setting up UFW
