@@ -48,8 +48,20 @@ sudo ufw default allow outgoing
 
 # installing no-ip
 cd /root
-#wget --content-disposition https://www.noip.com/download/linux/latest && tar xf noip-duc_3.3.0.tar.gz
-#cd /root/noip-duc_3.3.0/binaries && sudo apt install ./noip-duc_3.3.0_amd64.deb
+wget --content-disposition https://www.noip.com/download/linux/latest && tar xf noip-duc_3.3.0.tar.gz
+cd /root/noip-duc_3.*.*/binaries && sudo apt install ./noip-duc_3.*.*_amd64.deb
+
+# Create noip service
+sudo cp /root/noip-duc_3.*.*/debian/service /etc/systemd/system/noip-duc.service
+
+# Creating noip-duc config file
+tee /etc/default/noip-duc > /dev/null <<EOF
+#add the following
+## File: /etc/default/noip-duc
+NOIP_USERNAME=
+NOIP_PASSWORD=
+NOIP_HOSTNAMES=
+EOF
 
 # installing SC
 cd /root
