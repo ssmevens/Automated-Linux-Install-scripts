@@ -56,7 +56,6 @@ sudo cp /root/noip-duc_3.*.*/debian/service /etc/systemd/system/noip-duc.service
 
 # Creating noip-duc config file
 tee /etc/default/noip-duc > /dev/null <<EOF
-#add the following
 ## File: /etc/default/noip-duc
 NOIP_USERNAME=
 NOIP_PASSWORD=
