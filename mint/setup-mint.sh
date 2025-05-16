@@ -110,3 +110,50 @@ apt-get remove firefox -y
 cd /root
 #rm -rf /mint_files
 #rm -r *.deb
+
+ #====================== GRUB Bootloader Installation ======================
+
+# Set strict error handling - script will exit on any error
+# -e: Exit immediately if a command returns non-zero status
+# -u: Treat unset variables as errors
+# -o pipefail: Return value of pipeline is status of last command to exit with non-zero status
+set -euo pipefail
+
+# Define disk device paths
+# Main disk device (not partition) - modify if using different disk
+DISK="/dev/sda"        
+# EFI System Partition - modify if using different partition
+EFI_PART="/dev/sda1"   
+
+# -------- Legacy BIOS Installation --------
+# Install GRUB for BIOS systems by writing to Master Boot Record (MBR)
+# Uses i386-pc target for legacy boot compatibility
+grub-install --target=i386-pc "$DISK"
+
+# -------- UEFI Installation --------
+# Create and mount EFI partition mount point
+mkdir -p /boot/efi
+mount "$EFI_PART" /boot/efi
+
+# Install GRUB for UEFI systems with special options:
+# --target=x86_64-efi: Use 64-bit UEFI target
+# --efi-directory: Specify where EFI partition is mounted
+# --bootloader-id: Name that appears in EFI boot menu
+# --no-nvram: Don't update NVRAM boot entries
+# --removable: Install for removable media support
+grub-install --target=x86_64-efi \
+             --efi-directory=/boot/efi \
+             --bootloader-id=GRUB \
+             --no-nvram \
+             --removable
+
+# -------- Fallback Boot Path --------
+# Create standardized fallback boot path for maximum compatibility
+# This allows booting even if NVRAM entries are missing/corrupted
+mkdir -p /boot/efi/EFI/BOOT
+cp /boot/efi/EFI/GRUB/grubx64.efi /boot/efi/EFI/BOOT/BOOTX64.EFI
+
+# -------- Configuration Generation --------
+# Generate GRUB configuration file based on current system
+# Detects all bootable operating systems and creates boot menu
+update-grub
