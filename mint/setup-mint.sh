@@ -25,6 +25,9 @@ ln -sf /usr/share/zoneinfo/US/Central localtime
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo tee /etc/apt/trusted.gpg.d/google-chrome.asc
 sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
 add-apt-repository multiverse
+# this is to deal with the mscorefonts-installer eula that is screwing up multimedia install and slowing down install script
+echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | debconf-set-selections
+export DEBIAN_FRONTEND=noninteractive
 apt update
 apt dist-upgrade -y
 apt install google-chrome-stable -y
